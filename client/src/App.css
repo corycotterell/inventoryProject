@@ -50,3 +50,10 @@
 .invisible{
   visibility: hidden;
 }
+.float-container {
+  border: solid 1px #ccc;
+}
+.float-container input {
+  border: none;
+  outline: 0;
+}
