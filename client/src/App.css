@@ -30,3 +30,23 @@
     transform: rotate(360deg);
   }
 }
+.center{
+  text-align: center !important;
+}
+.button-primary{
+  border-radius: 100px !important;
+  background-color: #CE00FF !important; 
+  float: right;
+
+}
+.button-secondary{
+  border-radius: 100px !important;
+  background-color: #67007F !important;
+  float: left;
+}
+.login{
+  border-radius: 10px;
+}
+.invisible{
+  visibility: hidden;
+}
