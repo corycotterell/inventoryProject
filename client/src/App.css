@@ -32,6 +32,8 @@
 }
 .center{
   text-align: center !important;
+  width: 400px;
+  margin: 0 auto !important;
 }
 .button-primary{
   border-radius: 100px !important;
@@ -56,4 +58,13 @@
 .float-container input {
   border: none;
   outline: 0;
+}
+.image-style{
+  width: 250px;
+  height: 300px;
+}
+.display-oil-card{
+  width: 400px;
+  text-align: center !important;
+  border-radius: 25% !important;
 }

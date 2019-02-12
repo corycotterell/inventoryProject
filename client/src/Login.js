@@ -39,7 +39,6 @@ class Login extends Component {
                     <p></p>
                     <Button className="button-primary"onClick={this.handleClick}>Sign In</Button>
                     <Button className="button-secondary"onClick={this.handleClick}>Sign Up</Button>
-                    <p className="invisible">h</p>
                 </Card>
             </div>
         );
