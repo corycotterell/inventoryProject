@@ -3,7 +3,6 @@ const User = use('App/Models/User')
 
 class UserController {
     async login({ request, auth, response }) {
-        
         const email = request.input("email")
         const password = request.input("password");
         try {
