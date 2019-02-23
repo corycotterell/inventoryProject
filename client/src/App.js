@@ -5,12 +5,40 @@ import 'onsenui/css/onsen-css-components.css';
 import Login from './Login'
 import DisplayOil from './DisplayOil'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import Navbar from "./Navbar.js"
+import Register from './Register'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // light: 'ff1a8c',
+      main: '#9900CC',
+      // dark: '339ba5',
+      // contrastText: '#000',
+    },
+    secondary: {
+      // light: '#005b64',
+      main: '#D24CFF',
+      // dark: '#ff9d00',
+      // contrastText: '#000',
+    },
+    // button: {
+    //   backgroundColor: 'orange',
+    //   textColor: 'gray',
+    //   height: 50,
+    //   width: 100,
+    //   borderRadius: 35,
+    //   opacity: 50
+    // },
+  },
+});
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div>
+          <Navbar/>
+          <Route path="/register" component={Register}/>
           <Route path="/login" component={Login}/>
           <Route path="/oil"component={DisplayOil}/>
         </div>

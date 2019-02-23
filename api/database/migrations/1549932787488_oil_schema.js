@@ -7,7 +7,7 @@ class OilSchema extends Schema {
   up () {
     this.create('oils', (table) => {
       table.increments()
-      table.string('item_name',50).unique()
+      table.string('item_name',100).unique()
       table.integer('item_number',15)
       table.string('size', 50)
       table.string('retail_price',50)

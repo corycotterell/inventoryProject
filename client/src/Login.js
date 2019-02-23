@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import axios from 'axios'
+import { withRouter } from 'react-router'
 
 const styles = theme => ({
     main: {
@@ -59,18 +60,19 @@ class Login extends React.Component {
     }
     handleSubmit() {
         console.log(this.state)
-        axios.post("/loginUser", {
-            email: this.state.email,
-            password: this.state.password
-        }).then((response) => {
-            console.log(response)
-        }).catch((err) => {
-            console.log(err)
-        })
+        // axios.post("/loginUser", {
+        //     email: this.state.email,
+        //     password: this.state.password
+        // }).then((response) => {
+        //     console.log(response)
+        //     this.props.history.push('/home')
+        // }).catch((err) => {
+        //     console.log(err)
+        // })
     }
-    handleChange = name  => (e) =>{
+    handleChange = name => (e) => {
         this.setState({
-            [name]:e.target.value
+            [name]: e.target.value
         })
     }
     render() {
@@ -99,12 +101,12 @@ class Login extends React.Component {
                             label="Remember me"
                         />
                         <Button
-                            // type="submit"
+                            type="submit"
                             fullWidth
                             variant="contained"
                             color="primary"
                             onClick={this.handleSubmit}
-                        // className={this.props.classes.submit}
+                            className={this.props.classes.submit}
                         >
                             Sign in
           </Button>
@@ -119,4 +121,4 @@ Login.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Login);
+export default withRouter(withStyles(styles)(Login));

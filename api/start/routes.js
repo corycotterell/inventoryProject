@@ -21,5 +21,6 @@ Route.get('/', () => {
 })
 Route.post('/loginUser', "UserController.login")
 Route.get('/oil', "OilController.getOil")
+Route.get('/getOilByItemNumber', 'OilController.getOilByItemNumber')
 
 Route.post('/register', "UserController.register")
