@@ -1,11 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import RegisterIcon from '@material-ui/icons/HowToReg';
@@ -15,6 +12,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import axios from 'axios'
 // import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { withRouter } from 'react-router'
+
 const styles = theme => ({
     main: {
         width: 'auto',
@@ -66,7 +64,7 @@ class Register extends React.Component {
         this.directToLogin = this.directToLogin.bind(this)
     }
     handleSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
         console.log(this.state)
         axios.post('/registerUser',{
             first_name: this.state.first_name,
@@ -74,7 +72,9 @@ class Register extends React.Component {
             email: this.state.email,
             password: this.state.password,
         }).then((response) =>{
-            console.log(response)
+            if(response.data === "sucess"){
+                this.props.history.push('/home')
+            }
         })
     }
     handleChange = name => (e) => {
@@ -99,7 +99,7 @@ class Register extends React.Component {
                     </Typography>
                         <form className={this.props.classes.form}>
                             <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="FirstName">First Name</InputLabel>
+                                <InputLabel>First Name</InputLabel>
                                 <Input id="FirstName" name="first_name" autoComplete="FirstName" autoFocus onChange={this.handleChange('first_name')} />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
@@ -111,11 +111,11 @@ class Register extends React.Component {
                                 <Input type="email" id="email" name="email" autoComplete="email" autoFocus onChange={this.handleChange('email')} />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="password">Password</InputLabel>
+                                <InputLabel >Password</InputLabel>
                                 <Input type="password" id="password" name="password" autoComplete="password" autoFocus onChange={this.handleChange('password')}/>
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="password">Confirm Password</InputLabel>
+                                <InputLabel >Confirm Password</InputLabel>
                                 <Input type="password" id="confirmPassword" name="confirmPassword" autoComplete="password" autoFocus onChange={this.handleChange('confirm_password')}/>
                             </FormControl>
                             <Button
@@ -136,7 +136,7 @@ class Register extends React.Component {
                                 onClick={this.directToLogin}
                                 className={this.props.classes.secondColor}
                             >
-                                Already a Member Login Click Here
+                                Already a Member? Login Click Here
                             </Button>
                             
                         </form>

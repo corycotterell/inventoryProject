@@ -3,11 +3,12 @@ import './App.css';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 import Login from './Login'
-import DisplayOil from './DisplayOil'
+import DisplayInventory from './DisplayInventory'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Navbar from "./Navbar.js"
 import Register from './Register'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import HomePage from './Home'
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -38,9 +39,10 @@ class App extends Component {
       <Router>
         <div>
           <Navbar/>
+          <Route path="/home" component={HomePage}/>
           <Route path="/register" component={Register}/>
           <Route path="/login" component={Login}/>
-          <Route path="/oil"component={DisplayOil}/>
+          <Route path="/inventory"component={DisplayInventory}/>
         </div>
       </Router>
     );

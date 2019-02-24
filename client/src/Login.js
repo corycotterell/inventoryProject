@@ -58,17 +58,31 @@ class Login extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
-    handleSubmit() {
-        console.log(this.state)
-        // axios.post("/loginUser", {
-        //     email: this.state.email,
-        //     password: this.state.password
-        // }).then((response) => {
-        //     console.log(response)
-        //     this.props.history.push('/home')
-        // }).catch((err) => {
-        //     console.log(err)
-        // })
+    componentDidMount(){
+        axios.get('/getUser',
+        {headers: {'Authorization': `Bearer ${localStorage.getItem('member_token')}`}}
+        ).then((response) =>{
+            if(response.data.message === "success"){
+                this.props.history.push('/home')
+            }
+        }).catch((error) =>{
+            console.log(error)
+        })
+    }
+    handleSubmit(e) {
+        e.preventDefault()
+        axios.post("/loginUser", {
+            email: this.state.email,
+            password: this.state.password
+        }).then((response) => {
+            if (response.data.message === "success") {
+                let token = response.data.access_token.token
+                localStorage.setItem("member_token", token)
+                this.props.history.push('/home')
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
     }
     handleChange = name => (e) => {
         this.setState({

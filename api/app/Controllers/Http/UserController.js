@@ -17,8 +17,16 @@ class UserController {
             return e
         }
     }
+    async getUser({request,response,auth}){
+        try{
+            const user = await auth.getUser()
+            response.send({message:"success",user})
+        }catch(e){
+            response.send(e)
+        }
+    }
     async register({ request, response }) {
-
+        try{
         const user = await User.create({
 
             first_name: request.input("first_name"),
@@ -26,7 +34,10 @@ class UserController {
             email: request.input("email"),
             password: request.input("password"),
         })
-        response.send(user)
+        response.send("sucess")
+    }catch(e){
+        response.send(e)
+    }
     }
 
 }

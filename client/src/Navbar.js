@@ -30,6 +30,7 @@ class Navbar extends React.Component {
     this.goToLogin = this.goToLogin.bind(this)
     this.goToHome = this.goToHome.bind(this)
     this.goToMyInventory = this.goToMyInventory.bind(this)
+    this.goToRegister = this.goToRegister.bind(this)
   }
   goToLogin() {
     this.props.history.push("/login")
@@ -39,6 +40,9 @@ class Navbar extends React.Component {
   }
   goToMyInventory() {
     this.props.history.push('/inventory')
+  }
+  goToRegister(){
+    this.props.history.push('/register')
   }
   render() {
     // const { classes } = this.props;
@@ -54,6 +58,7 @@ class Navbar extends React.Component {
           </Typography>
             <Button onClick={this.goToMyInventory} color="inherit">Inventory</Button>
             <Button onClick={this.goToLogin} color="inherit">Login</Button>
+            <Button onClick={this.goToRegister} color="inherit">Register</Button>
           </Toolbar>
         </AppBar>
       </div>
