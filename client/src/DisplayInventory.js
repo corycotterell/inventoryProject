@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import Paper from '@material-ui/core/Paper';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import './App.css';
 import axios from 'axios'
-import Dialog from '@material-ui/core/Dialog'
+import OilCard from './OilCard.js'
 
 const styles = theme => ({
     margin: {
@@ -80,23 +79,11 @@ class DisplayInventory extends Component {
             console.log(error)
         })
     }
-    openModel(){
-        return(<Dialog
-            buttonName={'Update Profile'}
-            buttonType={'secondary'}
-            title={'Update Profile'}
-            dialog={'Are you sure you want to Update Your Profile?'}
-            confirm={'Update'}
-            deny={'Cancel'}
-            // action={this.updateProfile}
-            // user={this.state.user}
-        />)
-    }
     render() {
         return (
             <div>
                 <div className={this.props.classes.margin}>
-                    <Grid container spacing={2} alignItems="flex-start">
+                    <Grid container spacing={8} alignItems="flex-start">
                         <Grid item>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel>Search For An Oil Here</InputLabel>
@@ -110,13 +97,7 @@ class DisplayInventory extends Component {
                         </Grid>
                     </Grid>
                 </div>
-               
-                <Paper className={this.props.classes.card}>
-                <a className={this.props.classes.a} href="javascript:void(0);" onClick={this.openModel}>
-                    <img className={this.props.classes.image} src={this.state.url}/>
-                    <h4 className={this.props.classes.title}>{this.state.item_name}</h4>
-                    </a>
-                </Paper>
+                <OilCard/>
             </div >
         );
     }

@@ -3,9 +3,6 @@ import {withRouter} from 'react-router'
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios'
 class HomePage extends React.Component{
-constructor(){
-    super()
-}
 componentDidMount(){
     axios.get('/getUser',{
     headers: {'Authorization': `Bearer ${localStorage.getItem('member_token')}`}
