@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import Navbar from "./Navbar.js"
 import Register from './Register'
 // import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import DisplayAllOils from './DisplayAllOils'
 import HomePage from './Home'
+import DisplayAllProducts from './DisplayAllProducts';
 // const theme = ({
 //   palette: {
 //     primary: {
@@ -44,7 +44,7 @@ class App extends Component {
           <Route path="/register" component={Register}/>
           <Route path="/login" component={Login}/>
           <Route path="/inventory"component={DisplayInventory}/>
-          <Route path="/products" component={DisplayAllOils}/>
+          <Route path="/products" component={DisplayAllProducts}/>
         </div>
       </Router>
     );

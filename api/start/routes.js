@@ -20,7 +20,7 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 Route.post('/loginUser', "UserController.login")
-Route.post('/oil', "OilController.getOil")
+Route.get('/getAllProducts', "OilController.getAllProducts")
 Route.get('/getOilByItemNumber', 'OilController.getOilByItemNumber')
 Route.get('/getUser', 'UserController.getUser').middleware('auth')
 

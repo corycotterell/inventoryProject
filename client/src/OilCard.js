@@ -41,7 +41,7 @@ class OilCard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            item_url: "https://media.doterra.com/us/en/images/product/arborvitae-5ml.jpg",
+            item_picture_url: "https://media.doterra.com/us/en/images/product/arborvitae-5ml.jpg",
             item_name: "Some Oil",
             wholesale_price: "$50.00",
             retail_price: "$70.00",
@@ -64,14 +64,14 @@ class OilCard extends React.Component {
             <div>
                 <Paper className={this.props.classes.card}>
                     <a className={this.props.classes.a} href="#" onClick={this.handleClickOpen}>
-                        <h4 className={this.props.classes.title}>{this.state.item_name}</h4>
-                        <img className={this.props.classes.image} src={this.state.item_url} alt={`${this.state.item_name}`}/>
+                        <h4 className={this.props.classes.title}>{this.props.oilInfo.item_name}</h4>
+                        <img className={this.props.classes.image} src={this.props.oilInfo.item_picture_url} alt={`${this.props.oilInfo.item_name}`}/>
                         <p className={this.props.classes.content}>Click Here To View More!
                             </p>
                     </a>
                 </Paper>
 
-                <Dialog
+                {/* <Dialog
                     open={this.state.open}
                     onClose={this.handleClose} aria-labelledby="simple-dialog-title">
                     <h2 className="title" id="dialog-title">{this.state.item_name}</h2>
@@ -82,7 +82,7 @@ class OilCard extends React.Component {
                             Retail Price: {this.state.retail_price}
                         </h4>
                     </div>
-                </Dialog>
+                </Dialog> */}
             </div>
         )
     }
