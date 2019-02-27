@@ -1,7 +1,6 @@
 import React from 'react'
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
-import Dialog from "@material-ui/core/Dialog"
 
 const styles = theme => ({
     margin: {
@@ -15,7 +14,7 @@ const styles = theme => ({
         width: "fit-content"
     },
     image: {
-        width: "200px",
+        // width: "200px",
         height: "200px",
         objectFit:"cover",
         objectPosition:"top"
@@ -45,44 +44,26 @@ class OilCard extends React.Component {
             item_name: "Some Oil",
             wholesale_price: "$50.00",
             retail_price: "$70.00",
-            open: false
         }
-        this.handleClickOpen = this.handleClickOpen.bind(this)
-        this.handleClose = this.handleClose.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
-    handleClickOpen = () => {
-        this.setState({
-            open: true,
-        });
-    };
-
-    handleClose = () => {
-        this.setState({ open: false });
-    };
+    handleClick(e) {
+        let oilForModal = this.props.oilInfo
+        this.props.handleOpen(oilForModal)
+    }
     render() {
         return (
             <div>
-                <Paper className={this.props.classes.card}>
-                    <a className={this.props.classes.a} href="#" onClick={this.handleClickOpen}>
+                <a className={this.props.classes.a}  onClick={this.handleClick} href="#">
+                <Paper id={this.props.id.id} className={this.props.classes.card}>
+                    {/* <a className={this.props.classes.a} href="#"> */}
                         <h4 className={this.props.classes.title}>{this.props.oilInfo.item_name}</h4>
                         <img className={this.props.classes.image} src={this.props.oilInfo.item_picture_url} alt={`${this.props.oilInfo.item_name}`}/>
                         <p className={this.props.classes.content}>Click Here To View More!
                             </p>
-                    </a>
+                    
                 </Paper>
-
-                {/* <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose} aria-labelledby="simple-dialog-title">
-                    <h2 className="title" id="dialog-title">{this.state.item_name}</h2>
-                    <div>
-                        <img className={this.props.classes.modalImage} src={this.state.item_url} alt={`${this.state.item_name}`}/>
-                        <h4 className={this.props.classes.content}>
-                            Wholesale Price: {this.state.wholesale_price} <br/>
-                            Retail Price: {this.state.retail_price}
-                        </h4>
-                    </div>
-                </Dialog> */}
+                </a>
             </div>
         )
     }
