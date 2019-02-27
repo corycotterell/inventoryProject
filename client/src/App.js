@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import 'onsenui/css/onsenui.css';
-import 'onsenui/css/onsen-css-components.css';
 import Login from './Login'
 import DisplayInventory from './DisplayInventory'
 import { BrowserRouter as Router, Route} from "react-router-dom";

@@ -67,7 +67,6 @@ class DisplayAllProducts extends React.Component {
             oilForModal:oilInfo,
             open:true,
         });
-        console.log(this.state)
     }
     handleClose(){
         this.setState({open:false})
