@@ -12,7 +12,7 @@ const styles = {
   root: {
     flexGrow: 1,
   },
-  color:{
+  color: {
     backgroundColor: "#BF00FF"
   },
   grow: {
@@ -30,6 +30,7 @@ class Navbar extends React.Component {
     this.goToHome = this.goToHome.bind(this)
     this.goToMyInventory = this.goToMyInventory.bind(this)
     this.goToRegister = this.goToRegister.bind(this)
+    this.gotoProducts = this.gotoProducts.bind(this)
   }
   goToLogin() {
     this.props.history.push("/login")
@@ -40,14 +41,17 @@ class Navbar extends React.Component {
   goToMyInventory() {
     this.props.history.push('/inventory')
   }
-  goToRegister(){
+  goToRegister() {
     this.props.history.push('/register')
+  }
+  gotoProducts(){
+    this.props.history.push('/products')
   }
   render() {
     // const { classes } = this.props;
     return (
       <div className={this.props.classes.root}>
-        <AppBar className={this.props.classes.color}position="static">
+        <AppBar className={this.props.classes.color} position="static">
           <Toolbar>
             <IconButton onClick={this.goToHome} className={this.props.classes.menuButton} color="inherit" aria-label="Menu">
               <HomeIcon />
@@ -55,6 +59,7 @@ class Navbar extends React.Component {
             <Typography variant="h6" color="inherit" className={this.props.classes.grow}>
               Oil Inventory Management
           </Typography>
+            <Button onClick={this.gotoProducts} color="inherit">Products</Button>
             <Button onClick={this.goToMyInventory} color="inherit">Inventory</Button>
             <Button onClick={this.goToLogin} color="inherit">Login</Button>
             <Button onClick={this.goToRegister} color="inherit">Register</Button>

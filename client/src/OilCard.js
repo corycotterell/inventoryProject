@@ -11,13 +11,13 @@ const styles = theme => ({
     },
     card: {
         margin: theme.spacing.unit,
-        width: "fit-content"
+        width: "fit-content",
+        maxWidth:"200px"
     },
     image: {
-        // width: "200px",
+        width: "200px",
         height: "200px",
-        objectFit:"cover",
-        objectPosition:"top"
+        objectFit: "contain",
     },
     title: {
         textAlign: "center"

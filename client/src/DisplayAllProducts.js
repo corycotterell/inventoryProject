@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import OilCard from './OilCard';
-import { Grid,Dialog,withStyles } from '@material-ui/core';
+import { Grid, Dialog, withStyles, Button, Input, Backdrop } from '@material-ui/core';
 
 
 
@@ -17,13 +17,13 @@ const styles = theme => ({
         width: "fit-content"
     },
     image: {
-        // width: "200px",
+        width: "200px",
         height: "200px",
-        objectFit:"cover",
-        objectPosition:"top"
+        objectFit: "contain",
     },
     title: {
-        textAlign: "center"
+        textAlign: "center",
+        maxWidth:"400px"
     },
     content: {
         textAlign: "center"
@@ -33,10 +33,22 @@ const styles = theme => ({
         textDecoration: "none"
     },
     modalImage: {
-        width: "400px",
+        width: "400px", 
         height: "400px",
-        objectFit:"cover",
-        objectPosition:"top"
+        objectFit: "contain", 
+    },
+    button: {
+        float: "right",
+    },
+    innerButton: {
+        borderRadius: "100%",
+        minWidth:"0px"
+        // fontSize:"30px",
+    },
+    input:{
+        textAlign:"center",
+        // width:"30px",
+        // margin:"10px"
     },
 });
 class DisplayAllProducts extends React.Component {
@@ -49,13 +61,16 @@ class DisplayAllProducts extends React.Component {
                 wholesale_price: "$75",
                 retail_price: "$100"
             }],
-            oilForModal:{
+            oilForModal: {
 
             },
             open: false,
+            inventoryValue:0
         }
         this.handleOpen = this.handleOpen.bind(this)
         this.handleClose = this.handleClose.bind(this)
+        this.plus = this.plus.bind(this)
+        this.subtract = this.subtract.bind(this)
     }
     componentDidMount() {
         axios.get("/getAllProducts").then((response) => {
@@ -64,15 +79,27 @@ class DisplayAllProducts extends React.Component {
     }
     handleOpen(oilInfo) {
         this.setState({
-            oilForModal:oilInfo,
-            open:true,
+            oilForModal: oilInfo,
+            open: true,
         });
     }
-    handleClose(){
-        this.setState({open:false})
+    handleClose() {
+        this.setState({ open: false })
+    }
+    plus(){
+        this.setState({
+            inventoryValue: this.state.inventoryValue + 1
+        })
+    }
+    subtract(){
+        if(this.state.inventoryValue === 0){
+            return
+        }
+        this.setState({
+            inventoryValue: this.state.inventoryValue - 1
+        })
     }
     render() {
-        console.log(this.state.test)
         return (<div>
             <Grid container spacing={8}>
                 {this.state.allOils.map((e) => {
@@ -83,18 +110,41 @@ class DisplayAllProducts extends React.Component {
                     )
                 })}
             </Grid>
-             <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose} aria-labelledby="simple-dialog-title">
-                    <h2 className="title" id="dialog-title">{this.state.oilForModal.item_name}</h2>
-                    <div>
-                        <img className={this.props.classes.modalImage} src={this.state.oilForModal.item_picture_url} alt={`${this.state.oilForModal.item_name}`}/>
-                        <h4 className={this.props.classes.content}>
-                            Wholesale Price: {this.state.oilForModal.wholesale_price} <br/>
-                            Retail Price: {this.state.oilForModal.retail_price}
-                        </h4>
+            <Dialog
+                open={this.state.open}
+                onClose={this.handleClose} aria-labelledby="simple-dialog-title">
+                <h2 className="title" id="dialog-title">{this.state.oilForModal.item_name}</h2>
+                <div>
+                    <img className={this.props.classes.modalImage} src={this.state.oilForModal.item_picture_url} alt={`${this.state.oilForModal.item_name}`} />
+                    <br />
+                    <div className={this.props.classes.content}>
+                        <Button onClick={this.subtract} className={this.props.classes.innerButton}
+                            variant="contained"
+                        >-</Button>
+                        <h2 className={this.props.classes.input}>{this.state.inventoryValue}</h2>
+                        <Button onClick={this.plus} className={this.props.classes.innerButton}
+                            variant="contained"
+                        >+</Button>
                     </div>
-                </Dialog>
+                    <h4 className={this.props.classes.content}>
+                        Wholesale Price: {this.state.oilForModal.wholesale_price} <br />
+                        Retail Price: {this.state.oilForModal.retail_price}
+                    </h4>
+                    <Button
+                        color="secondary"
+                        variant="contained"
+                    >
+                        Cancel
+                        </Button>
+                    <Button
+                        color="primary"
+                        variant="contained"
+                        className={this.props.classes.button}
+                    >
+                        Add To Inventory
+                        </Button>
+                </div>
+            </Dialog>
         </div>)
     }
 }

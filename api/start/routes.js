@@ -16,12 +16,12 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
-Route.post('/loginUser', "UserController.login")
+
+Route.get('/getUserInventory', "OilController.getUserInventory")
 Route.get('/getAllProducts', "OilController.getAllProducts")
 Route.get('/getOilByItemNumber', 'OilController.getOilByItemNumber')
-Route.get('/getUser', 'UserController.getUser').middleware('auth')
+Route.post('/addOilToInventory', "OilController.addOilToInventory")
 
+Route.post('/loginUser', "UserController.login")
+Route.get('/getUser', 'UserController.getUser').middleware('auth')
 Route.post('/registerUser', "UserController.register")
