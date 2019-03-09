@@ -26,3 +26,7 @@ Run the following command to run startup migrations.
 ```js
 adonis migration:run
 ```
+- First The database is going to query over all the data
+- Its going to find just the oil ids for all the user ids that match the first colum
+- I need a way to count how many times each of those elements occur.
+- I also need to send back the oil information for each one of those values that has a number associated with how many times it occured.

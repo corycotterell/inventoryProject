@@ -8,7 +8,7 @@ class OilUser extends Model {
     oils() {
         return this
         .hasMany('App/Models/Oil')
-        .pivot_table("oil_user")
+        .pivotTable("oil_users")
       }
 
 }

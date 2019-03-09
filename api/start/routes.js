@@ -23,5 +23,5 @@ Route.get('/getOilByItemNumber', 'OilController.getOilByItemNumber')
 Route.post('/addOilToInventory', "OilController.addOilToInventory")
 
 Route.post('/loginUser', "UserController.login")
-Route.get('/getUser', 'UserController.getUser').middleware('auth')
+Route.get('/getUser', 'UserController.getUser')
 Route.post('/registerUser', "UserController.register")

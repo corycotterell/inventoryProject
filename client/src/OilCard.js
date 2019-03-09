@@ -44,6 +44,7 @@ class OilCard extends React.Component {
             item_name: "Some Oil",
             wholesale_price: "$50.00",
             retail_price: "$70.00",
+            message:"Click Here To View More!"
         }
         this.handleClick = this.handleClick.bind(this)
     }
@@ -59,7 +60,7 @@ class OilCard extends React.Component {
                     {/* <a className={this.props.classes.a} href="#"> */}
                         <h4 className={this.props.classes.title}>{this.props.oilInfo.item_name}</h4>
                         <img className={this.props.classes.image} src={this.props.oilInfo.item_picture_url} alt={`${this.props.oilInfo.item_name}`}/>
-                        <p className={this.props.classes.content}>Click Here To View More!
+                        <p className={this.props.classes.content}>{this.props.message}
                             </p>
                     
                 </Paper>

@@ -71,6 +71,7 @@ class DisplayAllProducts extends React.Component {
         this.handleClose = this.handleClose.bind(this)
         this.plus = this.plus.bind(this)
         this.subtract = this.subtract.bind(this)
+        this.addOilToInventory = this.addOilToInventory.bind(this)
     }
     componentDidMount() {
         axios.get("/getAllProducts").then((response) => {
@@ -99,13 +100,24 @@ class DisplayAllProducts extends React.Component {
             inventoryValue: this.state.inventoryValue - 1
         })
     }
+    addOilToInventory(){
+        axios.post("/addOilToInventory",
+        {headers: {'Authorization': `Bearer ${localStorage.getItem('member_token')}`},
+    })
+        .then((response) =>{
+            console.log(response)
+        })
+        .catch((e)=>{
+            console.log(e)
+        })
+    }
     render() {
         return (<div>
             <Grid container spacing={8}>
                 {this.state.allOils.map((e) => {
                     return (
                         <Grid item>
-                            <OilCard id={e} oilInfo={e} handleOpen={this.handleOpen} />
+                            <OilCard id={e} oilInfo={e} message={"Click Here To View More!"} handleOpen={this.handleOpen} />
                         </Grid>
                     )
                 })}
@@ -140,6 +152,7 @@ class DisplayAllProducts extends React.Component {
                         color="primary"
                         variant="contained"
                         className={this.props.classes.button}
+                        onClick={this.addOilToInventory}
                     >
                         Add To Inventory
                         </Button>
